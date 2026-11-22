@@ -47,21 +47,17 @@ async function getElevation(lat, lon) {
       `https://cyberjapandata2.gsi.go.jp/general/dem/scripts/getelevation.php?lon=${lon}&lat=${lat}&outtype=JSON`;
 
     const response = await fetch(url);
-
-    alert("HTTP: " + response.status);
-
     const data = await response.json();
-
-    alert(JSON.stringify(data));
 
     document.getElementById("elevation").textContent =
       data.elevation + " m";
 
   } catch (error) {
 
-    alert("エラー: " + error);
-
     console.error(error);
+
+    document.getElementById("elevation").textContent =
+      "取得失敗";
 
   }
 }
