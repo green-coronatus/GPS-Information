@@ -4,29 +4,39 @@
 <meta charset="UTF-8">
 <title>GPSテスト</title>
 </head>
-<body style="padding:20px;">
+<body style="padding:30px;">
 
-<button onclick="startGps()" style="font-family:Hiragino Sans; font-size:24pt;">
+<button onclick="startGps()">
 開始
 </button>
 
-<button onclick="stopGps()" style="font-family:Hiragino Sans; font-size:24pt;">
+<button onclick="stopGps()">
 停止
 </button>
 
-<p style="font-family:Hiragino Sans; font-size:18pt;">
+<button onclick="showElevation()">
+標高取得
+</button>
+
+<p>
 緯度: <span id="latitude">---</span>
 </p>
 
-<p style="font-family:Hiragino Sans; font-size:18pt;">
+<p>
 経度: <span id="longitude">---</span>
 </p>
 
-<p style="font-family:Hiragino Sans; font-size:18pt;">
-標高:
+<p>
+GPS高度:
+<span id="gpsAltitude">---</span>
+</p>
+
+<p>
+地理院標高:
 <span id="elevation">---</span>
 </p>
 
 <script src="app.js"></script>
+
 </body>
 </html>

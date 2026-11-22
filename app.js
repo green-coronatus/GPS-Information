@@ -1,4 +1,10 @@
+//
+// グローバル変数
+//
 let watchId = null;
+let currentLat = null;
+let currentLon = null;
+
 
 //
 // GPS情報取得開始
@@ -10,18 +16,33 @@ function startGps() {
   }
 
   watchId = navigator.geolocation.watchPosition(
-    async position => {
+    position => {
 
-      const lat = position.coords.latitude;
-      const lon = position.coords.longitude;
+      currentLat = position.coords.latitude;
+      currentLon = position.coords.longitude;
 
-      document.getElementById("latitude").textContent = lat;
-      document.getElementById("longitude").textContent = lon;
+      document.getElementById("latitude").textContent =
+        currentLat;
 
-      await getElevation(lat, lon);
+      document.getElementById("longitude").textContent =
+        currentLon;
+
+      const altitude = position.coords.altitude;
+
+      document.getElementById("gpsAltitude").textContent =
+        altitude === null
+          ? "取得不可"
+          : altitude.toFixed(1) + " m";
+    },
+    error => {
+      console.error(error);
+    },
+    {
+      enableHighAccuracy: true
     }
   );
 }
+
 
 //
 // GPS情報取得停止
@@ -36,6 +57,27 @@ function stopGps() {
   }
 }
 
+
+//
+// 標高取得ボタン
+//
+async function showElevation() {
+
+  if (currentLat === null ||
+      currentLon === null) {
+
+    alert("GPSが取得されていません");
+
+    return;
+  }
+
+  await getElevation(
+    currentLat,
+    currentLon
+  );
+}
+
+
 //
 // 国土地理院のサーバーから標高データを取得
 //
@@ -47,6 +89,7 @@ async function getElevation(lat, lon) {
       `https://cyberjapandata2.gsi.go.jp/general/dem/scripts/getelevation.php?lon=${lon}&lat=${lat}&outtype=JSON`;
 
     const response = await fetch(url);
+
     const data = await response.json();
 
     document.getElementById("elevation").textContent =
@@ -58,6 +101,5 @@ async function getElevation(lat, lon) {
 
     document.getElementById("elevation").textContent =
       "取得失敗";
-
   }
 }
