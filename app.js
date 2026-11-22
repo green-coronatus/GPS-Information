@@ -1,7 +1,7 @@
 let watchId = null;
 
 //
-// GPSî•ñæ“¾ŠJn
+// GPSæƒ…å ±å–å¾—é–‹å§‹
 //
 function startGps() {
 
@@ -24,7 +24,7 @@ function startGps() {
 }
 
 //
-// GPSî•ñæ“¾’â~
+// GPSæƒ…å ±å–å¾—åœæ­¢
 //
 function stopGps() {
 
@@ -37,7 +37,7 @@ function stopGps() {
 }
 
 //
-// ‘“y’n—‰@‚ÌƒT[ƒo[‚©‚ç•W‚ƒf[ƒ^‚ğæ“¾
+// å›½åœŸåœ°ç†é™¢ã®ã‚µãƒ¼ãƒãƒ¼ã‹ã‚‰æ¨™é«˜ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—
 //
 async function getElevation(lat, lon) {
 
@@ -59,7 +59,7 @@ async function getElevation(lat, lon) {
 
   } catch (error) {
 
-    alert("ƒGƒ‰[: " + error);
+    alert("ã‚¨ãƒ©ãƒ¼: " + error);
 
     console.error(error);
 
