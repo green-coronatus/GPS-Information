@@ -61,16 +61,3 @@ async function getElevation(lat, lon) {
 
   }
 }
-/*
-async function getElevation(lat, lon) {
-
-  const url =
-    `https://cyberjapandata2.gsi.go.jp/general/dem/scripts/getelevation.php?lon=${lon}&lat=${lat}&outtype=JSON`;
-
-  const response = await fetch(url);
-  const data = await response.json();
-
-  document.getElementById("elevation").textContent =
-    data.elevation + " m";
-}
-*/
