@@ -79,7 +79,8 @@ async function showElevation() {
 
 
 //
-// 国土地理院のサーバーから標高データを取得
+// 標高データ取得
+// 国土地理院のAPIを使用
 //
 async function getElevation(lat, lon) {
 
@@ -102,4 +103,21 @@ async function getElevation(lat, lon) {
     document.getElementById("elevation").textContent =
       "取得失敗";
   }
+}
+
+
+//
+// 地質情報取得
+// 産業技術総合研究所（AIST）の「20万分の1日本シームレス地質図 Web API」を使用
+//
+async function getGeology(lat, lon) {
+
+  const url =
+    `https://gbank.gsj.jp/seamless/v2/api/1.3.1/legend.json?point=${lat},${lon}`;
+
+  const response = await fetch(url);
+
+  const data = await response.json();
+
+  console.log(data);
 }
